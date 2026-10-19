@@ -7,6 +7,7 @@
     python src/vialcolor.py <image> --viz out/check.png
 
 Colour is measured as ABSORBANCE against an empty-vial reference, not as raw pixels.
+Pixels are linearised out of sRGB first: Beer-Lambert is only valid on linear light.
 The vial sits against white paper at the top of the frame and dark steel lower down,
 so a raw reading of the same liquid changes with fill height. Beer-Lambert absorbance
 A = -log10(I / I0) cancels the backdrop, the glass and the illumination, leaving a
@@ -32,10 +33,21 @@ VIAL_Y = (266, 422)              # usable glass column: below the holder collar,
 COLLAR = (205, 262, 268, 392)    # y0, y1, x0, x1 - black holder block
 
 COLLAR_L_MAX = 120.0             # above this the collar band is bare backdrop: no cart
-MIN_STEP = 0.10                  # smallest air->liquid absorbance step that counts
+MIN_STEP = 0.20                 # smallest air->liquid absorbance step that counts
 MIN_RUN = 4                      # rows the liquid region must span
 I0_MIN = 26.0                    # reference rows darker than this are too noisy to use
 VIAL_CAPACITY_ML = 80.0          # stated operating limit; the column is scaled to it
+
+def srgb_to_linear(x: np.ndarray) -> np.ndarray:
+    """sRGB 0-255 -> linear light 0-1. Beer-Lambert is only valid on linear light."""
+    x = np.asarray(x, np.float64) / 255.0
+    return np.where(x <= 0.04045, x / 12.92, ((x + 0.055) / 1.055) ** 2.4)
+
+
+def linear_to_srgb(x: np.ndarray) -> np.ndarray:
+    x = np.clip(np.asarray(x, np.float64), 0.0, 1.0)
+    return 255.0 * np.where(x <= 0.0031308, 12.92 * x, 1.055 * x ** (1 / 2.4) - 0.055)
+
 
 _REF_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                          "out", "empty_vial_reference.npy")
@@ -92,8 +104,10 @@ def _absorbance_profile(img: np.ndarray):
         rows_r[i] = np.median(ref[i][k], axis=0)
 
     usable = rows_r.mean(axis=1) >= I0_MIN
-    A = -np.log10(np.clip(rows_c, 1.0, None) / np.clip(rows_r, 1.0, None))
-    return np.clip(A, -0.5, 3.0), usable, rows_r
+    lin_c = np.clip(srgb_to_linear(rows_c), 1e-5, None)
+    lin_r = np.clip(srgb_to_linear(rows_r), 1e-5, None)
+    A = -np.log10(lin_c / lin_r)
+    return np.clip(A, -0.5, 4.0).astype(np.float32), usable, rows_r
 
 
 def _find_liquid_top(A: np.ndarray, usable: np.ndarray) -> tuple[int, str]:
@@ -166,7 +180,7 @@ def measure(src) -> Measurement:
     m.od = round(float(Amean.mean()), 3)
 
     # Render the dye as it would look transmitted through white light.
-    rgb = np.clip(255.0 * np.power(10.0, -np.maximum(Amean, 0.0)), 0, 255)
+    rgb = np.clip(linear_to_srgb(np.power(10.0, -np.maximum(Amean, 0.0))), 0, 255)
     px = np.uint8([[rgb[::-1]]])                                  # -> BGR for OpenCV
     lab = cv2.cvtColor(px, cv2.COLOR_BGR2LAB)[0, 0].astype(np.float32)
     lab = np.array([lab[0] * 100.0 / 255.0, lab[1] - 128.0, lab[2] - 128.0])

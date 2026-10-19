@@ -78,7 +78,10 @@ def run(video: str):
             od=round(float(np.median([r["od"] for r in top])), 3),
             chroma=round(float(np.median([r["chroma"] for r in top])), 1),
             r=int(np.median([r["r"] for r in top])), g=int(np.median([r["g"] for r in top])),
-            b=int(np.median([r["b"] for r in top]))))
+            b=int(np.median([r["b"] for r in top])),
+            a_r=round(float(np.median([r["a_r"] for r in top])), 4),
+            a_g=round(float(np.median([r["a_g"] for r in top])), 4),
+            a_b=round(float(np.median([r["a_b"] for r in top])), 4)))
 
     fpath = os.path.join(OUT, f"fills_video{video}.csv")
     with open(fpath, "w", newline="") as f:
