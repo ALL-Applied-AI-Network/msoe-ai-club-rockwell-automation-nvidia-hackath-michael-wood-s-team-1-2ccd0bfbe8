@@ -1,0 +1,7 @@
+﻿{
+  "previous": {"name": "Blue", "volumes_ml": {"T-400": 10}},
+  "current": {"name": "Orange", "volumes_ml": {"T-200": 10}},
+  "hold_up_ml": 2,
+  "tolerance_delta_e": 5,
+  "observations_rgb": [[240, 125, 30], [240, 125, 30], [240, 125, 30]]
+}
