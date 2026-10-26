@@ -24,9 +24,9 @@ Three things it does differently from assuming a model and moving on:
 Given V_d the model is linear in the dye coefficients, so V_d is found by profiling:
 scan V_d, solve least squares at each, keep the best.
 
-    python src/carryover.py                 # fit, compare models, report
-    python src/carryover.py --explain 7     # explain one vial
-    python src/carryover.py --risk 6 7      # risk of running recipe 7 after recipe 6
+    python src/carryover.py --alignment out/alignment.csv                 # fit, compare models, report
+    python src/carryover.py --alignment out/alignment.csv --explain 7     # explain one vial
+    python src/carryover.py --alignment out/alignment.csv --risk 6 7      # risk of running recipe 7 after recipe 6
 """
 from __future__ import annotations
 
@@ -42,31 +42,14 @@ SLICE_ML = 0.25                                  # delay-line discretisation
 
 
 # ----------------------------------------------------------------- data
-# Detected fill k is matched to labelled vial k. That holds only while no fill is
-# missed, and segment_fills finds 27 of the 30 vials in video 5. Checking each fill's
-# measured hue against its recipe's expected character shows the mapping is sound
-# through vial 18 and desynchronises after it (Recipe 11 should be blue but reads
-# green, Recipe 12 should be orange but reads blue). Everything past 18 is therefore
-# excluded from the fit rather than silently corrupting it.
-TRUSTED_THROUGH_VIAL = 18
-
-
-def load():
-    fills = {int(f["fill"]): f for f in
-             csv.DictReader(open(os.path.join(OUT, "fills_video5.csv")))}
-    recipes = {int(r["vial"]): r for r in
-               csv.DictReader(open(os.path.join(VF, "labels", "video5_vial_recipes.csv")))}
-    seq = []
-    for vial in sorted(recipes):
-        r = recipes[vial]
-        vols = {t: float(r[k] or 0) for t, k in
-                (("T-100", "t100_ml"), ("T-200", "t200_ml"), ("T-400", "t400_ml"))}
-        f = fills.get(vial)                      # matched by order; see calibrate_tanks.py
-        obs = np.array([float(f["a_r"]), float(f["a_g"]), float(f["a_b"])]) if f else None
-        if vial > TRUSTED_THROUGH_VIAL:
-            obs = None                       # mapping not verifiable past here
-        seq.append(dict(vial=vial, recipe=int(r["recipe_id"]), vols=vols,
-                        total=sum(vols.values()), pos=(vial - 1) % 3, obs=obs))
+def load(alignment):
+    """Load only reviewed identities; retain unmeasured recipes in hydraulic history."""
+    from evaluate_carryover import load_aligned
+    seq, exclusions, unmatched = load_aligned(
+        os.path.join(OUT, "fills_video5.csv"),
+        os.path.join(VF, "labels", "video5_vial_recipes.csv"), alignment)
+    print(f"Reviewed alignment: {len(exclusions)} excluded/missing vials; "
+          f"{len(unmatched)} unmatched detections")
     return seq
 
 
@@ -116,17 +99,21 @@ def design(mix: np.ndarray) -> np.ndarray:
 def fit(seq, well_mixed: bool, grid=np.arange(0.5, 80.01, 0.5)):
     """Two stages, so contamination cannot bias the colour model.
 
-    Stage 1 fits the dye coefficients on 3rd-of-batch vials only - the ones the data
-    shows are actually clean. Fitting them on every vial lets the contaminated firsts
+    Stage 1 fits dye coefficients only on explicitly reviewed clean calibration
+    samples in the alignment file. Fitting them on every vial lets the contaminated firsts
     drag every prediction toward the mean and leaves clean vials under-saturated.
 
     Stage 2 holds those coefficients fixed and scans the hold-up volume, which is the
     only remaining free parameter.
     """
-    clean_idx = [i for i, s_ in enumerate(seq) if s_["obs"] is not None and s_["pos"] == 2]
+    clean_idx = [i for i, s_ in enumerate(seq) if s_["obs"] is not None and s_.get("calibration_clean", False)]
+    if len(clean_idx) < 3:
+        raise ValueError("Need at least three reviewed clean observations")
     Yc = np.array([seq[i]["obs"] for i in clean_idx])
     Xc = design(np.array([[seq[i]["vols"][t] / seq[i]["total"] for t in TANKS]
                           for i in clean_idx]))
+    if len(clean_idx) < 3 or np.linalg.matrix_rank(Xc) < 3:
+        raise ValueError("Need three independent reviewed clean recipe mixtures for calibration")
     coef, *_ = np.linalg.lstsq(Xc, Yc, rcond=None)
     dye_rms = float(np.sqrt(((Yc - Xc @ coef) ** 2).mean()))
 
@@ -162,13 +149,12 @@ def to_rgb(absorbance):
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--alignment", required=True, help="reviewed vial-to-fill CSV; see EVALUATION.md")
     ap.add_argument("--explain", type=int, metavar="VIAL")
     ap.add_argument("--risk", nargs=2, type=int, metavar=("PREV", "NEXT"))
     a = ap.parse_args()
 
-    seq = load()
-    print(f"\nUsing vials 1-{TRUSTED_THROUGH_VIAL}: past that the detected-fill to "
-          f"labelled-vial mapping desynchronises (3 fills missed).")
+    seq = load(a.alignment)
     plug, mixed = fit(seq, well_mixed=False), fit(seq, well_mixed=True)
     model = min((plug, mixed), key=lambda m: m["rms"])
     name = "well-mixed" if model["well_mixed"] else "plug-flow"
@@ -206,7 +192,7 @@ def main():
             ap.error(f"vial must be 1-{len(seq)}")
         s_ = seq[i]
         print(f"\nVial {s_['vial']}  (Recipe {s_['recipe']}, "
-              f"{['1st','2nd','3rd'][s_['pos']]} of its batch)")
+              f"{s_['pos'] + 1} of its batch)")
         order = " -> ".join(t for t in DISPENSE_ORDER if s_["vols"][t] > 0)
         print(f"  recipe        : " + ", ".join(f"{t} {s_['vols'][t]:.0f} mL"
                                                 for t in TANKS if s_["vols"][t] > 0)
@@ -236,8 +222,8 @@ def main():
     pred_clean, _ = predict(seq, model, clean=True)
 
     print(f"\nHydraulic model comparison (fitted on {sum(s['obs'] is not None for s in seq)} vials)")
-    print(f"  dye coefficients fitted on {sum(1 for s_ in seq if s_['pos']==2 and s_['obs'] is not None)} "
-          f"clean (3rd-of-batch) vials, RMS {plug['dye_rms']:.4f}")
+    print(f"  dye coefficients fitted on {sum(1 for s_ in seq if s_.get('calibration_clean', False) and s_['obs'] is not None)} "
+          f"reviewed clean vials, RMS {plug['dye_rms']:.4f}")
     print(f"  plug-flow   V_d = {plug['hold_up_ml']:5.1f} mL   RMS {plug['rms']:.4f}"
           + ("  [at grid edge]" if plug["at_grid_edge"] else ""))
     print(f"  well-mixed  V_d = {mixed['hold_up_ml']:5.1f} mL   RMS {mixed['rms']:.4f}"
@@ -261,7 +247,7 @@ def main():
         ec = float(np.linalg.norm(s["obs"] - pred_clean[i]))
         ed = float(np.linalg.norm(s["obs"] - pred_dirty[i]))
         verdict = "OK" if ec < 0.25 else ("carryover explains it" if ed < ec * 0.7 else "unexplained")
-        print(f"{s['vial']:>4} {s['recipe']:>3} {['1st','2nd','3rd'][s['pos']]:>4} "
+        print(f"{s['vial']:>4} {s['recipe']:>3} {s['pos'] + 1:>4} "
               f"{str(to_rgb(s['obs'])):>14} {str(to_rgb(pred_clean[i])):>14} "
               f"{str(to_rgb(pred_dirty[i])):>14} {ec:>9.3f} {ed:>9.3f}  {verdict}")
         rows.append((s, ec, ed, verdict))
@@ -272,7 +258,7 @@ def main():
     fa = sum(1 for r in later if r[3] != "OK")
     print("-" * 104)
     print(f"first-of-batch vials explained by carryover : {expl}/{len(firsts)}")
-    print(f"later vials flagged (false alarms)          : {fa}/{len(later)}")
+    print(f"later vials flagged (not verified false alarms)          : {fa}/{len(later)}")
     print(f"mean error, no carryover model              : {np.mean([r[1] for r in rows]):.3f}")
     print(f"mean error, with carryover model            : {np.mean([r[2] for r in rows]):.3f}")
 
@@ -285,3 +271,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
