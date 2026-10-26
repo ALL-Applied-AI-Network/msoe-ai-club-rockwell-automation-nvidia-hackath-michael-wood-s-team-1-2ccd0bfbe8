@@ -55,3 +55,11 @@ git clone <this repository's URL from the green "Code" button>
 - Before the finals, replace this README with your project: the problem, your approach, results, how to run it, and credits.
 
 **Can't push or see this repository?** Open the [team workspace](https://dashboard.all-ai-network.org/j/L36HEH) and press the GitHub check button. If it still doesn't work, ping Brett Storoe in `#hackathon-general` on Slack.
+
+
+## Recipe-aware evaluation contribution
+
+See [EVALUATION.md](EVALUATION.md) for reviewed vial alignment, leave-one-recipe-out
+evaluation, a runnable synthetic example, and visual reports. This workflow makes
+missing detections and exclusions explicit; actual video-5 matches still require
+review. Real-data fitting is exploratory and needs organizer clarification.

@@ -1,0 +1,2 @@
+# Evaluation and HTML reporting; vision preprocessing also needs opencv-python.
+numpy>=1.24,<3

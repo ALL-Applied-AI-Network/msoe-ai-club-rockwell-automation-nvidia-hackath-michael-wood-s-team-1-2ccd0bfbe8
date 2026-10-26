@@ -1,0 +1,13 @@
+vial,fill,status,label,calibration_clean,evidence
+1,1,matched,clean,,synthetic fixture
+2,,missing,unknown,,synthetic fixture
+3,2,matched,clean,1,synthetic fixture
+4,3,matched,clean,,synthetic fixture
+5,4,matched,clean,,synthetic fixture
+6,5,matched,clean,1,synthetic fixture
+7,6,matched,clean,,synthetic fixture
+8,7,matched,clean,,synthetic fixture
+9,8,matched,clean,1,synthetic fixture
+10,9,matched,clean,,synthetic fixture
+11,10,matched,clean,,synthetic fixture
+12,11,matched,clean,1,synthetic fixture
