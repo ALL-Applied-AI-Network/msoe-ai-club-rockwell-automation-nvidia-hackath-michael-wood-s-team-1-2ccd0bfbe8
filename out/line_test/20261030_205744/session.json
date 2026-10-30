@@ -1,0 +1,18 @@
+{
+  "source": "/home/shamar-admin/Documents/repo/Team 1/shamar capture/videos/video_vial_fill_2026-10-0001_20261028_190058_930315.mp4",
+  "queue": [
+    {
+      "recipe": {
+        "name": "Blue 40 (start_capture)",
+        "t100": 0,
+        "t200": 0,
+        "t400": 40
+      },
+      "count": 1
+    }
+  ],
+  "dx": 4,
+  "dy": -1,
+  "reference": "site capture",
+  "truth": {}
+}

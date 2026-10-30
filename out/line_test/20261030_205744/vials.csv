@@ -1,0 +1,2 @@
+index,time,recipe,pos,status,observed_hex,expected_hex,predicted_hex,first_hex,error_clean,error_carryover,final_ml,truth,reasons
+1,21:00:09,Blue 40 (start_capture),1,MISMATCH,#9cb486,#0268d4,#0268d4,#d6d3b5,2.675,2.675,66.2,,"off-colour and NOT explained by the previous recipe - check tank contents, dosing volumes and lighting"

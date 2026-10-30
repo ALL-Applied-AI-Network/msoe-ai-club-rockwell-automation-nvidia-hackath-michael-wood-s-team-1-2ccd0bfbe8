@@ -1,0 +1,6 @@
+index,time,recipe,pos,status,observed_hex,expected_hex,predicted_hex,first_hex,error_clean,error_carryover,final_ml,truth,reasons
+1,21:04:03,Blue 40 (start_capture),1,MISMATCH,#3f685e,#0268d4,#0268d4,#90a177,1.924,1.924,77.9,,"off-colour and NOT explained by the previous recipe - check tank contents, dosing volumes and lighting"
+2,21:05:06,,,NO RECIPE,#396055,,,#74bfbc,,,77.9,,add this vial's recipe to the queue to judge it
+3,21:06:31,,,NO RECIPE,#c25919,,,#d0a65a,,,80.0,,add this vial's recipe to the queue to judge it
+4,21:07:28,,,NO RECIPE,#436f64,,,#d6c99f,,,77.9,,add this vial's recipe to the queue to judge it
+5,21:08:30,,,NO RECIPE,#376760,,,#5fc9d6,,,77.9,,add this vial's recipe to the queue to judge it

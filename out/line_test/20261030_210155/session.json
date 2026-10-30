@@ -1,0 +1,18 @@
+{
+  "source": "/dev/v4l/by-id/usb-4K_USB_CAMERA_HD_USB_CAMERA_01.00.00-video-index0",
+  "queue": [
+    {
+      "recipe": {
+        "name": "Blue 40 (start_capture)",
+        "t100": 0,
+        "t200": 0,
+        "t400": 40
+      },
+      "count": 1
+    }
+  ],
+  "dx": 4,
+  "dy": -1,
+  "reference": "site capture",
+  "truth": {}
+}

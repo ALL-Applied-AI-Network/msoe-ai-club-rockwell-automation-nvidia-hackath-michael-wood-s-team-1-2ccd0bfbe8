@@ -1,6 +1,5 @@
 *.zip
 data/
-out/
 *.mp4
 *.usdc
 *.usda
