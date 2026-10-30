@@ -103,7 +103,18 @@ If git is not available, download the repository as a ZIP from GitHub (green **C
 **Download ZIP**), unzip it, and `cd` into the folder. Every command below runs **from the
 repository root** (the folder that contains `RUNBOOK.md`).
 
-Create an isolated environment and install:
+**Ubuntu / macOS: one command does the install and the self-test (Step 3), no sudo needed:**
+
+```bash
+bash setup.sh
+```
+
+It creates `.venv` inside the folder, installs the requirements (it works around a missing
+`python3-venv` package by itself), then runs the self-test. It ends with `ALL CHECKS PASSED` and
+`Ready.`; then go to Step 4. From then on use `.venv/bin/python` (or `source .venv/bin/activate`
+first, after which `python` is that one). Tested on a fresh Ubuntu 24.04 with no sudo.
+
+Or create the environment by hand:
 
 **Windows (PowerShell or cmd):**
 ```bat

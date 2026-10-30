@@ -12,7 +12,7 @@ shared mixing path"), and warns about risky changeovers **before** they run.
 
 Python 3.10 or newer.
 
-**Windows:** double-click `run_dashboard.bat`. **Mac/Linux:** `./run_dashboard.sh`.
+**Ubuntu/macOS:** `bash setup.sh` (install + self-test, no sudo), then `./run_dashboard.sh <camera>`. **Windows:** double-click `run_dashboard.bat`.
 Or by hand:
 
 ```bash
