@@ -49,8 +49,12 @@ def linear_to_srgb(x: np.ndarray) -> np.ndarray:
     return 255.0 * np.where(x <= 0.0031308, 12.92 * x, 1.055 * x ** (1 / 2.4) - 0.055)
 
 
-_REF_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                         "out", "empty_vial_reference.npy")
+_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# A freshly built reference (src/build_reference.py, needs the dataset) wins; otherwise
+# the copy shipped in models/ lets the monitor run from a plain clone with no data.
+_REF_PATH = next((p for p in (os.path.join(_ROOT, "out", "empty_vial_reference.npy"),
+                              os.path.join(_ROOT, "models", "empty_vial_reference.npy"))
+                  if os.path.exists(p)), os.path.join(_ROOT, "out", "empty_vial_reference.npy"))
 _REF = None
 
 

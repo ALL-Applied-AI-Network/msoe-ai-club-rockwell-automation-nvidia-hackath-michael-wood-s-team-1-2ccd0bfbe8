@@ -1,0 +1,2118 @@
+{
+ "report": {
+  "frames": 300,
+  "vial_present": 300,
+  "vial_recall": 0.98,
+  "vial_centre_err_px": 1.0,
+  "liquid": {
+   "tp": 155,
+   "fp": 104,
+   "fn": 32,
+   "tn": 9
+  },
+  "liquid_accuracy": 0.547,
+  "liquid_top_err_px": 56.2
+ },
+ "rows": [
+  {
+   "file": "vial_fill_20260923_195737_165681.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200543_936291.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260922_172042_610359.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201141_961977.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260923_191459_117721.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195851_569030.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171232_369074.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195237_345510.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_194924_328013.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260923_200108_353129.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_191418_913734.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195815_373642.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260922_171918_202241.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260923_201133_931740.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171737_691721.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171045_982570.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171029_893999.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_192623_197864.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195046_738370.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_192801_779545.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_184817_122041.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171218_327706.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171827_940714.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200248_942842.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201456_982142.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 0,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260922_171200_272982.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260923_195116_892562.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201103_767331.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200230_823337.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200736_590439.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260923_195048_754286.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171657_490844.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_191328_683582.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_191453_085753.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201147_994541.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260923_200447_636339.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195357_858696.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_194817_970591.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200521_813779.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260923_195546_502614.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171543_155951.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195919_701964.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201338_549731.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200222_780123.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200359_342579.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_184724_833088.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_194735_741254.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171555_202749.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201204_074657.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195731_125978.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260922_171651_463822.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201505_032319.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200102_316568.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200742_627905.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_191043_724473.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_170843_436842.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171041_949165.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_192617_171231.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_191210_240038.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_191519_248044.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195000_517922.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195847_553877.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_191029_656060.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171152_247603.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171625_349858.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260923_200734_574119.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260922_171418_750338.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_191521_256759.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201143_974915.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200953_344719.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195323_650711.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_170618_833607.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_194751_827118.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195610_634945.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171316_552751.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_170504_523735.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195411_922479.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171416_744503.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195317_607509.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_192647_337798.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171506_972748.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200014_031140.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_191527_285583.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171120_110019.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260922_172301_280004.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200750_680004.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195528_392850.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171928_243635.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260923_200146_560489.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260923_195036_682461.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_194741_773473.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200218_755582.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171805_852100.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200018_059790.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_191439_015727.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201240_258627.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_191314_615173.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_170456_490677.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201001_402477.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171902_122076.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260923_195634_776398.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_170825_335646.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 0,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260923_191352_794730.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200628_166466.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171312_531360.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195628_749309.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171848_055634.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260922_171110_077950.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195542_483832.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171858_106690.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_172120_780944.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200036_159626.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_184923_471282.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260923_201336_539115.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200423_491799.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200321_101325.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260923_195616_674530.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_184718_817385.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260922_192841_976027.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_191158_158845.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_170725_098652.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201507_040912.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_192657_385060.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201320_475658.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195747_213983.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195026_633783.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260923_195604_603795.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_191336_723711.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_184757_005377.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_191127_969880.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201236_236673.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200632_179922.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_184841_249638.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260923_195544_491902.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201015_500300.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201424_796369.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_191434_999506.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200214_734801.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_192651_356125.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_184821_143268.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_170951_722933.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171553_196420.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171823_927436.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200329_150675.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201304_381522.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195331_693994.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201119_860358.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171426_785016.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260923_194717_665803.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200746_650877.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260923_195933_775926.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200626_162252.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_194749_817503.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_172134_877278.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_194759_868508.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200834_915927.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195538_460954.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_172050_651814.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201308_420019.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_184728_845687.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_170432_316717.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_192731_603379.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_191228_334508.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201125_893491.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201330_512836.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_194733_736776.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195715_014666.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_192653_366008.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_170801_222177.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_170741_145775.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195134_995294.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_194719_681338.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_194912_278514.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_172054_674841.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195255_478617.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195719_059721.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_184714_798175.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260922_171438_841291.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260922_171104_060103.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201523_125031.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_191326_675661.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201314_451131.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195741_184723.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171450_882372.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260922_192803_792790.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_191324_663198.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200242_902017.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200911_104984.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171703_525112.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200212_717227.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_184917_438354.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195347_797024.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_184927_489025.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195251_442796.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195713_000081.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200216_745010.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_172008_448484.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_191428_964760.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_191316_625494.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200752_689068.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_194737_748900.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201033_615137.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171645_428177.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195448_148484.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201334_523255.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_191242_422828.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201230_207283.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_170510_547342.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195305_531452.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195733_134420.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200403_362060.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195407_905610.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_194938_409463.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 0,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260922_170949_709903.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195221_253586.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 0,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260923_200618_118845.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171023_878547.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_191250_477702.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_194926_337247.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260922_172046_632371.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201115_835499.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200104_324720.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200857_023473.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195721_070470.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260923_195413_938001.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_184726_838430.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200828_882680.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_184642_631071.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201232_211742.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_184811_087311.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200032_132296.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 0,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260923_191121_937628.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200349_287899.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_170835_388908.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_170646_942738.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_191410_882876.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200012_026107.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195247_413927.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195556_559398.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200250_950888.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_170911_545089.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201406_698593.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200706_399641.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_172146_923764.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200136_488519.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200710_417070.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201458_986582.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_184901_348582.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_170853_486536.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195514_320559.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_194956_494700.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200909_089421.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171332_611830.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200610_088566.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_184644_643610.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195941_830727.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260923_191041_715980.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_192751_726163.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171930_262161.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260922_171240_394655.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_172040_599981.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171128_147252.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_192625_205826.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_170640_926538.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171033_909677.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_194842_099892.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171001_772522.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_172116_766655.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171743_725244.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171924_231432.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260922_171424_779372.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260923_201031_596297.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200517_796860.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171054_010831.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201426_807246.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171420_758626.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_170552_723785.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_191312_606813.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195524_373228.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201206_084799.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171336_621234.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171434_828732.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260923_195735_155355.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_170957_753903.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171721_615797.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171745_728485.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_191346_776917.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_170550_718701.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201224_186803.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200134_474920.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260922_170658_999005.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200118_410160.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_195157_123836.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200204_666047.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260922_171735_680032.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_200754_702155.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_191212_248313.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_201035_633065.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 0,
+   "liquid_pred": 0
+  },
+  {
+   "file": "vial_fill_20260922_192615_153562.jpg",
+   "present": 1,
+   "liquid": 0,
+   "vial_found": 1,
+   "liquid_pred": 1
+  },
+  {
+   "file": "vial_fill_20260923_194914_295470.jpg",
+   "present": 1,
+   "liquid": 1,
+   "vial_found": 1,
+   "liquid_pred": 1
+  }
+ ]
+}

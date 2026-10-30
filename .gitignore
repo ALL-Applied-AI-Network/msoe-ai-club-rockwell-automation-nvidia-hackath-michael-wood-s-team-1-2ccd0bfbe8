@@ -16,3 +16,8 @@ venv/
 .DS_Store
 .vscode/
 .idea/
+
+# model weights and on-site captures
+*.pt
+# ...except the trained vial locator, which the dashboard needs from a plain clone
+!models/vial_yolo.pt

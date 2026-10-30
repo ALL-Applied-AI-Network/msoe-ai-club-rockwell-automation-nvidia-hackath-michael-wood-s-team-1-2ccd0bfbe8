@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Recipe-Aware Color Monitor</title>
+<style>
+  :root { --bg:#f5f6f8; --card:#fff; --ink:#1d2330; --mute:#6b7383; --line:#e2e5ea;
+          --ok:#1f8a4c; --warn:#b7791f; --bad:#c53030; --info:#2b6cb0; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:14px/1.4 system-ui, Segoe UI, sans-serif; background:var(--bg); color:var(--ink); }
+  header { padding:12px 20px; background:#1d2330; color:#fff; display:flex; gap:16px; align-items:baseline; }
+  header h1 { font-size:18px; margin:0; }
+  header .st { margin-left:auto; font-size:13px; opacity:.85; }
+  main { display:grid; grid-template-columns: 672px minmax(0,1fr); gap:16px; padding:16px 20px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:12px 14px; }
+  .card h2 { font-size:14px; margin:0 0 8px; text-transform:uppercase; letter-spacing:.04em; color:var(--mute); }
+  .stack > * + * { margin-top:16px; }
+  input, select, button { font:inherit; padding:5px 8px; border:1px solid #c9ced6; border-radius:5px; background:#fff; }
+  input[type=number] { width:64px; }
+  button { cursor:pointer; background:#eef1f5; }
+  button.primary { background:var(--info); color:#fff; border-color:var(--info); }
+  button.danger { background:#fff; color:var(--bad); border-color:var(--bad); }
+  .row { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+  .row + .row { margin-top:8px; }
+  #frame { width:640px; height:480px; background:#222; display:block; border-radius:4px; }
+  .sw { display:inline-block; width:34px; height:22px; border-radius:4px; border:1px solid #0003; vertical-align:middle; }
+  .sw.big { width:56px; height:36px; }
+  table { border-collapse:collapse; width:100%; }
+  th, td { text-align:left; padding:6px 6px; border-bottom:1px solid var(--line); vertical-align:middle; }
+  th { font-size:12px; color:var(--mute); font-weight:600; }
+  .badge { display:inline-block; padding:2px 8px; border-radius:10px; font-size:12px; font-weight:700; color:#fff; }
+  .OK { background:var(--ok); } .CARRYOVER { background:var(--warn); } .CARRYOVERq { background:#d69e2e; }
+  .MISMATCH { background:var(--bad); } .NORECIPE { background:#999; }
+  .HIGH { color:var(--bad); font-weight:700; } .MEDIUM { color:var(--warn); font-weight:700; } .LOW { color:var(--ok); }
+  .mute { color:var(--mute); font-size:12px; }
+  .reasons { font-size:12px; max-width:340px; }
+  .thumb { height:90px; border-radius:3px; }
+  .err { color:var(--bad); font-weight:600; }
+  .flash { padding:6px 10px; background:#ebf4ff; border-radius:5px; font-size:13px; display:none; }
+  .alert { background:#fff5f5; border:1px solid #feb2b2; }
+  .kpi { display:flex; gap:18px; } .kpi div b { display:block; font-size:20px; }
+  .truth button { padding:2px 6px; font-size:12px; } .truth button.sel { background:#1d2330; color:#fff; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Recipe-Aware Color Monitoring &amp; Carryover Alerts</h1>
+  <span class="mute" style="color:#cbd2dc">Fluid Mixing Station · vial_fill camera</span>
+  <span class="st" id="hdr">connecting…</span>
+</header>
+<main>
+  <div class="stack">
+    <div class="card">
+      <h2>Camera</h2>
+      <div class="row">
+        <input id="source" style="flex:1" placeholder="0 (USB cam) · rtsp://… · C:\path\video.mp4 · C:\folder\of\images">
+        <button class="primary" onclick="start()">Start</button>
+        <button onclick="post('/api/stop')">Stop</button>
+      </div>
+      <div class="row mute">
+        every <input id="every" type="number" value="8" min="1"> frames ·
+        speed <input id="speed" type="number" value="1" step="0.5" min="0"> × (0 = max) ·
+        <button onclick="setSrc('data/vial_fill/videos/vial_fill_video_5.mp4')">video 5</button>
+        <button onclick="setSrc('data/vial_fill/images')">dataset stills</button>
+      </div>
+      <div class="row" style="margin-top:10px"><img id="frame" alt=""></div>
+      <div class="row" id="live"></div>
+      <div class="row">
+        <span class="mute">camera offset</span>
+        dx <input id="dx" type="number" value="0"> dy <input id="dy" type="number" value="0">
+        <button onclick="shift()">Apply</button>
+        <button onclick="post('/api/align')" title="park an empty vial first">Auto-align</button>
+        <button onclick="post('/api/reference')" title="park an EMPTY vial first">Capture empty reference</button>
+        <button onclick="post('/api/reference',{reset:true})">Reset ref</button>
+      </div>
+      <div class="row mute" id="refinfo"></div>
+      <div class="flash" id="flash"></div>
+    </div>
+
+    <div class="card">
+      <h2>Recipe queue <span class="mute">(the n-th finished vial is judged against the n-th slot)</span></h2>
+      <table id="qtab"><thead><tr><th>#</th><th>name</th><th>T-100 clear</th><th>T-200 orange</th><th>T-400 blue</th><th>vials</th><th>expected</th><th></th></tr></thead><tbody></tbody></table>
+      <div class="row" style="margin-top:8px">
+        <select id="lib"><option value="">+ add from labelled recipes…</option></select>
+        <button onclick="addBlank()">+ custom recipe</button>
+        <button onclick="post('/api/video5')">Load video-5 schedule</button>
+        <button class="danger" onclick="queue=[];pushQueue()">Clear</button>
+      </div>
+      <div class="mute" style="margin-top:6px">Limits: ≤ 80 mL total · T-200 ≤ 50 mL · each used tank ≥ 10 mL · never T-300. Dispense order T-200 → T-400 → T-100.</div>
+    </div>
+  </div>
+
+  <div class="stack">
+    <div class="card" id="riskcard">
+      <h2>Upcoming changeover risk (predicted before the vial is filled)</h2>
+      <table id="risk"><thead><tr><th>changeover</th><th>risk</th><th>should be</th><th>1st vial predicted</th><th>vials affected</th><th>advice</th></tr></thead><tbody></tbody></table>
+    </div>
+
+    <div class="card">
+      <h2>Inspected vials</h2>
+      <div class="kpi" id="kpi"></div>
+      <table id="vials"><thead><tr><th>#</th><th>vial</th><th>recipe</th><th>detected</th><th>expected</th><th>w/ carryover</th><th>verdict &amp; explanation</th><th>operator truth</th></tr></thead><tbody></tbody></table>
+    </div>
+  </div>
+</main>
+<script>
+let queue = [], lib = [], editing = false, lastQueueJSON = "";
+const $ = id => document.getElementById(id);
+const sw = (hex, big) => `<span class="sw${big?' big':''}" style="background:${hex}" title="${hex}"></span>`;
+
+async function post(url, body={}) {
+  const r = await fetch(url, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)});
+  const j = await r.json();
+  if (j.message && j.message !== 'ok') { const f=$('flash'); f.textContent=j.message; f.style.display='block'; setTimeout(()=>f.style.display='none', 6000); }
+  refresh();
+}
+function setSrc(s){ $('source').value = s; }
+function start(){ post('/api/start', {source:$('source').value, every:+$('every').value, speed:+$('speed').value}); }
+function shift(){ post('/api/shift', {dx:+$('dx').value, dy:+$('dy').value}); }
+function pushQueue(){ post('/api/queue', {queue}); }
+function addBlank(){ queue.push({recipe:{name:`Recipe ${queue.length+1}`, t100:20, t200:0, t400:50}, count:3}); pushQueue(); }
+
+$('lib').onchange = e => {
+  const r = lib[+e.target.value]; if (!r) return;
+  queue.push({recipe:{name:r.name, t100:r.t100, t200:r.t200, t400:r.t400}, count:3});
+  e.target.value = ''; pushQueue();
+};
+
+function renderQueue(s) {
+  const j = JSON.stringify(s.queue);
+  if (editing || j === lastQueueJSON) return;
+  lastQueueJSON = j; queue = s.queue;
+  const risks = {}; (s.risks||[]).forEach(r => risks[r.next] = r);
+  $('qtab').tBodies[0].innerHTML = queue.map((q,i) => {
+    const p = (s.problems||{})[i] || [];
+    const f = (k) => `<input type="number" min="0" max="80" value="${q.recipe[k]}" data-i="${i}" data-k="${k}">`;
+    return `<tr class="${p.length?'alert':''}"><td>${i+1}</td>
+      <td><input value="${q.recipe.name}" data-i="${i}" data-k="name" style="width:110px"></td>
+      <td>${f('t100')}</td><td>${f('t200')}</td><td>${f('t400')}</td>
+      <td><input type="number" min="1" value="${q.count}" data-i="${i}" data-k="count"></td>
+      <td>${q.expected_hex ? sw(q.expected_hex) : ''}${p.length?`<div class="err">${p.join('<br>')}</div>`:''}</td>
+      <td><button onclick="queue.splice(${i},1);pushQueue()">✕</button></td></tr>`;
+  }).join('');
+  $('qtab').querySelectorAll('input').forEach(inp => {
+    inp.onfocus = () => editing = true;
+    inp.onchange = () => { editing = false; const i=+inp.dataset.i, k=inp.dataset.k;
+      if (k==='count') queue[i].count = +inp.value; else queue[i].recipe[k] = k==='name' ? inp.value : +inp.value;
+      pushQueue(); };
+    inp.onblur = () => setTimeout(()=>editing=false, 200);
+  });
+}
+
+function renderRisk(s) {
+  $('risk').tBodies[0].innerHTML = (s.risks||[]).length ? s.risks.map(r => `<tr>
+    <td>${r.prev} → <b>${r.next}</b></td><td class="${r.level}">${r.level} <span class="mute">(${r.error})</span></td>
+    <td>${sw(r.clean_hex)}</td><td>${sw(r.first_vial_hex)}</td><td>${r.vials_affected}</td>
+    <td class="reasons">${r.advice}</td></tr>`).join('')
+    : `<tr><td colspan="6" class="mute">Add two or more different recipes to the queue to see changeover risk.</td></tr>`;
+}
+
+function renderVials(s) {
+  const a = s.accuracy;
+  const flagged = s.vials.filter(v => v.status && v.status !== 'OK' && v.status !== 'NO RECIPE').length;
+  $('kpi').innerHTML = `<div><b>${s.vials.length}</b><span class="mute">vials</span></div>
+    <div><b style="color:var(--bad)">${flagged}</b><span class="mute">flagged</span></div>
+    <div><b>${a.n ? (100*a.accuracy).toFixed(0)+'%' : '–'}</b><span class="mute">agreement with operator (n=${a.n})</span></div>
+    <div class="mute">caught ${a.tp} · missed ${a.fn} · false alarms ${a.fp} · correct pass ${a.tn}</div>`;
+  $('vials').tBodies[0].innerHTML = s.vials.slice().reverse().map(v => {
+    const cls = (v.status||'').replace(' ','').replace('?','q');
+    const t = v.truth;
+    return `<tr><td>${v.index}<div class="mute">${v.time}</div></td>
+      <td>${v.image ? `<img class="thumb" src="data:image/jpeg;base64,${v.image}">` : ''}</td>
+      <td>${v.recipe||'–'}<div class="mute">${v.recipe_desc||''}${v.pos?` · vial ${v.pos} of batch`:''}</div><div class="mute">${v.final_ml} mL measured</div></td>
+      <td>${sw(v.observed_hex,1)}<div class="mute">first drop ${sw(v.first_hex)}</div></td>
+      <td>${v.expected_hex?sw(v.expected_hex,1):''}</td>
+      <td>${v.predicted_hex?sw(v.predicted_hex,1):''}</td>
+      <td><span class="badge ${cls}">${v.status}</span>
+        ${v.error_clean!=null?`<span class="mute"> err ${v.error_clean} → ${v.error_carryover}</span>`:''}
+        <div class="reasons">${(v.reasons||[]).join('<br>')}</div></td>
+      <td class="truth">
+        <button class="${t==='good'?'sel':''}" onclick="post('/api/truth',{index:${v.index},value:'${t==='good'?'':'good'}'})">good</button>
+        <button class="${t==='bad'?'sel':''}" onclick="post('/api/truth',{index:${v.index},value:'${t==='bad'?'':'bad'}'})">off-colour</button></td></tr>`;
+  }).join('') || `<tr><td colspan="8" class="mute">No finished vials yet.</td></tr>`;
+}
+
+async function refresh() {
+  let s;
+  try { s = await (await fetch('/api/state')).json(); } catch { $('hdr').textContent = 'server not reachable'; return; }
+  $('hdr').innerHTML = `${s.status}${s.source?` · ${s.source}`:''} · session ${s.session}` + (s.error?` · <span style="color:#feb2b2">${s.error}</span>`:'');
+  const L = s.live || {};
+  $('live').innerHTML = L.label ? `${sw(L.hex,1)} <b>${!L.present?'no vial':L.liquid?L.level_ml.toFixed(0)+' mL':'empty'}</b>
+     <span class="mute">OD ${L.od} · ${L.filling?'filling…':'idle'} · ${L.vials} vials so far</span>`
+     + (L.ai ? ` <span class="mute">· AI vial locator: ${L.ai.vial ? 'found ('+L.ai.vial+')' : 'not found'}</span>` : '') : '<span class="mute">no frames yet</span>';
+  $('refinfo').textContent = `reference: ${s.reference} · offset dx=${s.dx} dy=${s.dy} · model: ${s.model.hydraulics}, hold-up ${s.model.hold_up_ml} mL, tolerance ${s.model.tolerance} · AI: ${s.ai}`;
+  if (document.activeElement !== $('dx') && document.activeElement !== $('dy')) { $('dx').value = s.dx; $('dy').value = s.dy; }
+  renderQueue(s); renderRisk(s); renderVials(s);
+}
+
+(async () => {
+  refresh(); setInterval(refresh, 1000);
+  setInterval(() => { $('frame').src = '/frame.jpg?t=' + Date.now(); }, 250);
+  lib = await (await fetch('/api/library')).json();
+  $('lib').innerHTML += lib.map((r,i) => `<option value="${i}">${r.name}: ${r.t100}/${r.t200}/${r.t400} mL — ${r.note}</option>`).join('');
+})();
+</script>
+</body>
+</html>

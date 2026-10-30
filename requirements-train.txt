@@ -1,0 +1,4 @@
+# Only for retraining the YOLO vial locator (src/train_yolo.py) or exporting it to ONNX.
+-r requirements.txt
+ultralytics>=8.3
+onnx>=1.15
