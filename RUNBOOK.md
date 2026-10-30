@@ -79,9 +79,10 @@ camera view (§11) instead of working around it.
 
 | Need | Detail |
 |---|---|
-| OS | Windows 10/11, macOS 12+, or Linux |
-| Python | **3.10 or newer**. Check with `python --version` (Windows) / `python3 --version` (Mac/Linux). |
+| OS | **Ubuntu 22.04 / 24.04** (tested on 24.04), Windows 10/11, or macOS 12+ |
+| Python | **3.10 or newer**. Check with `python3 --version` (Ubuntu/Mac) / `python --version` (Windows). Ubuntu 22.04 ships 3.10 and 24.04 ships 3.12, both fine; 20.04 ships 3.8, too old. |
 | Internet | Only for the install in Step 2 (about 60 MB: NumPy + OpenCV). Running needs none. |
+| Desktop | A logged-in desktop session to show the page. Over SSH with no desktop, see §5 "No desktop". |
 | Camera | The fill-station camera visible to this computer as (a) a camera device, (b) an `rtsp://` / `http://` stream, or (c) a folder that the vision system saves images into. A recorded video file also works. |
 | Browser | Any modern browser on this computer. |
 | GPU | Not needed. Everything runs on the CPU. |
@@ -111,23 +112,27 @@ python -m venv .venv
 python -m pip install -r requirements.txt
 ```
 
-**macOS / Linux:**
+**Ubuntu / macOS:**
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
 ```
 
-Expected: pip ends with `Successfully installed numpy-... opencv-python-...` (or says they are
+On Ubuntu, if `python3 -m venv .venv` fails with `ensurepip is not available`, the venv
+package is missing. Ask the operator to run `sudo apt install python3-venv` (a system install:
+do not do it without their OK), then delete the half-made `.venv` folder and repeat.
+
+Expected: pip ends with `Successfully installed numpy-... opencv-python-headless-...` (or says they are
 already satisfied). From here on, `python` means the one inside `.venv`. Re-activate it in any new
 terminal.
 
 | If you see | Do this |
 |---|---|
 | `python` not found / opens the Microsoft Store | Use `py -3` instead of `python` on Windows, or install Python 3.10+ from python.org |
-| `No matching distribution found for opencv-python` | Python is too old or 32-bit; use 64-bit Python 3.10+ |
+| `No matching distribution found for opencv-python-headless` | Python is too old or 32-bit; use 64-bit Python 3.10+ |
 | SSL / proxy errors | The network blocks PyPI. Try a phone hotspot for the install only, or `pip download -r requirements.txt` on another machine and `pip install --no-index --find-links <folder> -r requirements.txt` here |
-| Linux: `ImportError: libGL.so.1` | `pip uninstall opencv-python && pip install opencv-python-headless` (the dashboard does not need OpenCV's own windows) |
+| `ImportError: libGL.so.1` (Ubuntu) | Something installed the desktop OpenCV build: `pip uninstall -y opencv-python && pip install --force-reinstall opencv-python-headless` |
 
 ---
 
@@ -161,7 +166,7 @@ The command exits with code 0 on success and 1 on any failure. For full error de
 | 2 | Incomplete download | Re-clone. `models/` must contain `color_model.json`, `empty_vial_reference.npy`, `vial_yolo.onnx` |
 | 3, 4 | Colour measurement broken | Do not run on the line. Send the output to the team (§11) |
 | 5 | Model file corrupt | Re-clone |
-| 6 | AI locator cannot load (old OpenCV without ONNX support) | `pip install -U opencv-python`. If it still fails, carry on: the dashboard runs without it and Auto-align uses template matching (good for camera shifts up to about 60 px) |
+| 6 | AI locator cannot load (old OpenCV without ONNX support) | `pip install -U opencv-python-headless`. If it still fails, carry on: the dashboard runs without it and Auto-align uses template matching (good for camera shifts up to about 60 px) |
 | 7 | Alignment broken | Usually follows from 6; same fix |
 | 8 | Port in use or firewall | Close other copies of the dashboard; or run it later with `--port 8060` |
 
@@ -189,6 +194,13 @@ shows the following, which is the view the system was built on (compare with
 
 Note its number `N`. A laptop's built-in webcam usually shows up as camera 0; that is **not** the
 station camera.
+
+**On Ubuntu:** cameras are `/dev/video0`, `/dev/video1`, … (`ls /dev/video*` lists them; the
+number after `video` is the camera number). One USB camera often appears as **two** numbers; only
+one gives a picture, and `--list-cameras` saves a snapshot only for that one. If `--list-cameras`
+finds nothing although `/dev/video*` exists, the user may lack permission: `groups` must list
+`video`. Adding the user to it is a system change for the operator
+(`sudo usermod -aG video $USER`, then log out and back in).
 
 If no camera is found: check the cable, close any other program using the camera (vision
 software, Teams/Zoom, Camera app), and on macOS allow camera access for the terminal in
@@ -222,8 +234,8 @@ a camera at a very different zoom or angle is not supported (see §10).
 python src/dashboard.py --source <N or URL or folder or video>
 ```
 
-or with no `--source` to choose it in the page. On Windows `run_dashboard.bat` does the install
-check and asks for the source; on Mac/Linux `./run_dashboard.sh <source>`.
+or with no `--source` to choose it in the page. On Ubuntu/Mac `./run_dashboard.sh <source>` (or
+`bash run_dashboard.sh <source>`) does the install check first; on Windows `run_dashboard.bat`.
 
 Expected console output:
 
@@ -245,6 +257,11 @@ Useful options:
 | `--no-yolo` | disable the AI locator |
 | `--speed 0 --every 4` | video files: process as fast as possible, every 4th frame |
 | `--video5` | pre-load the dataset's recipe schedule (only useful with the dataset video) |
+
+**No desktop (SSH only).** The browser tab cannot open there. Start with `--host 0.0.0.0` and
+open `http://<this computer's IP>:8050` on another computer on the same network (`hostname -I`
+prints the IP), or from your own machine tunnel it: `ssh -L 8050:127.0.0.1:8050 <user>@<host>`
+and open `http://127.0.0.1:8050`.
 
 The page header shows the status (`running`, `stopped`, `error: ...`). The camera panel shows the
 live frame with overlays: a **yellow box** (where colour is measured), a **blue box** (holder
@@ -360,7 +377,7 @@ the team (§11).
 | Vials appear in the wrong rows | A vial was missed or extra | Edit the counts in the queue; verdicts recompute |
 | No vial rows ever appear although liquid shows | Fill never "finishes": cart does not leave the frame, or the stream stops mid-fill | Rows appear when the cart moves away; stop the source to flush the last vial |
 | `could not find the vial holder` | Camera angle or zoom very different from the dataset view | Ask whether the camera can be positioned like `models/empty_vial_reference.png`; this system expects that framing |
-| `AI vial locator not available` | ONNX model could not load | Auto-align still works by template matching; or `pip install -U opencv-python` |
+| `AI vial locator not available` | ONNX model could not load | Auto-align still works by template matching; or `pip install -U opencv-python-headless` |
 | Page does not load | Server not running | Check the terminal for an error; start it again |
 | `cannot listen on port 8050 ... another dashboard is probably running` | A copy is already running | Use the page of the running copy, or close it (Ctrl+C in its terminal), or start with `--port 8060` |
 | Readings wrong after restarting the computer and moving the camera | Saved offset/reference are from the old position | Press **Reset ref**, then redo Step 6 |
@@ -377,6 +394,21 @@ Send to the team: the zipped `out/line_test/<session>/` folder, `out/line_test/C
 ---
 
 ## 12. Driving it without the browser (for agents)
+
+**Agents: read this first.**
+
+- **Show the page.** People at the line watch the dashboard page; it is the demo. Start the
+  dashboard **without** `--no-browser` and leave the page open on screen for the whole test. Use
+  the API below *alongside* the page, never instead of it.
+- **Keep the server running.** `dashboard.py` is a server: it never exits on its own. Start it as a
+  background process (for example `nohup python src/dashboard.py --source N > dashboard.log 2>&1 &`
+  on Ubuntu), not as a command you wait on, and do not stop it until the test is over.
+- **Wait until it is up** before doing anything else: the log shows
+  `dashboard on http://127.0.0.1:8050`, or `curl -s localhost:8050/api/state` answers.
+- **One copy only.** A second copy refuses to start (`cannot listen on port 8050`). Use the one that
+  is running.
+- **Stop it cleanly** at the end: `curl -s -X POST localhost:8050/api/stop -H "Content-Type: application/json" -d '{}'`,
+  then end the process (Ctrl+C, or `kill <pid>`). Results are saved as vials finish, and again on exit.
 
 Everything the page does goes through a small JSON API on the same port. With the dashboard
 running (`--no-browser` is fine):

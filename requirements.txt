@@ -1,4 +1,4 @@
 # Everything the line monitor needs, including the AI vial locator (runs from
 # models/vial_yolo.onnx through OpenCV, so no PyTorch is required).
 numpy>=1.24
-opencv-python>=4.8
+opencv-python-headless>=4.8   # no GUI libraries needed (we never open OpenCV windows); still reads cameras
