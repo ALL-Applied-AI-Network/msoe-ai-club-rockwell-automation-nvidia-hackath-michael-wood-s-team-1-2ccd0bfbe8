@@ -170,7 +170,7 @@ def git_rev():
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--refresh", action="store_true", help="re-run vial detection on the video")
-    ap.add_argument("--tolerance", type=float, default=0.25, help="clean-vs-observed alarm threshold")
+    ap.add_argument("--tolerance", type=float, default=0.30, help="clean-vs-observed alarm threshold")
     ap.add_argument("--explain-gain", type=float, default=0.30)
     ap.add_argument("--truth-tol", type=float, default=0.25, help="defect = differs from batch's last vial by more")
     ap.add_argument("--sweep", action="store_true", help="also sweep the alarm threshold")

@@ -2,9 +2,9 @@
 
 Rockwell Automation + NVIDIA Innovation Lab, Fall 2026 · Dataset 2: Fluid Mixing Station
 
-Residual fluid from the previous recipe can discolour the first vial of the next batch, and the
-existing inspection only checks that a colour is *known*, not that it matches the *intended*
-recipe. This system watches the fill-station camera, says what colour each vial **should** be from
+Residual fluid from the previous recipe can discolor the first vial of the next batch, and the
+existing inspection only checks that a color is *known*, not that it matches the *intended*
+recipe. This system watches the fill-station camera, says what color each vial **should** be from
 its recipe, flags vials that don't match, explains **why** (e.g. "residue from Recipe 6 in the
 shared mixing path"), and warns about risky changeovers **before** they run.
 
@@ -29,15 +29,15 @@ The page opens at <http://127.0.0.1:8050>. Then:
    locator finds the vial and the frame is shifted onto the measured geometry, so a camera that
    sits differently from the dataset camera still measures the right pixels. Check the yellow
    box sits on the vial; `dx` / `dy` can be set by hand.
-3. **Reference.** With the empty vial still parked, press **Capture empty reference**. Colour is
+3. **Reference.** With the empty vial still parked, press **Capture empty reference**. Color is
    measured as absorbance against this frame, which cancels the local lighting and glass.
-4. **Recipes.** Enter the recipes in the order they will run (or pick from the labelled ones).
+4. **Recipes.** Enter the recipes in the order they will run (or pick from the labeled ones).
    The *n*-th finished vial is judged against the *n*-th slot. Recipes outside the station limits
    (> 80 mL, T-200 > 50 mL, a used tank < 10 mL) are flagged red.
-5. **Run.** Each finished vial appears with its photo, the detected colour, the expected colour,
-   the colour predicted *with* carryover, a verdict (OK / CARRYOVER / MISMATCH) and the reason.
+5. **Run.** Each finished vial appears with its photo, the detected color, the expected color,
+   the color predicted *with* carryover, a verdict (OK / CARRYOVER / MISMATCH) and the reason.
    The **changeover risk** table predicts the first vial of each upcoming recipe change.
-6. **Score it.** Press *good* / *off-colour* on each vial; caught / missed / false alarms are
+6. **Score it.** Press *good* / *off-color* on each vial; caught / missed / false alarms are
    tallied live. Everything is logged to `out/line_test/<session>/` (CSV + vial photos).
 
 The AI vial locator runs from `models/vial_yolo.onnx` through OpenCV, so no PyTorch is needed. Check an install with `python src/selftest.py`. **[RUNBOOK.md](RUNBOOK.md)** is the full step-by-step guide.
@@ -46,9 +46,9 @@ The AI vial locator runs from `models/vial_yolo.onnx` through OpenCV, so no PyTo
 
 | Part | File | What it does |
 |---|---|---|
-| Colour + level measurement | `src/vialcolor.py` | Beer-Lambert absorbance against an empty-vial reference, on linearised sRGB, so the backdrop, glass and lighting cancel. Fill level from the air/liquid absorbance step. |
-| Per-vial events | `src/fillevents.py` | Turns the frame stream into one event per finished vial; keeps the colour of the **first liquid to land**, the most direct evidence of carryover. |
-| Expected colour + carryover | `src/colormodel.py`, `src/carryover.py` | Tank dye coefficients fitted on clean (last-of-batch) vials; the shared mixing path simulated as a well-mixed hold-up volume (fitted: 48 mL) fed in the fixed T-200 → T-400 → T-100 order. Explains a vial if modelling the previous recipe's residue removes most of its error. |
+| Color + level measurement | `src/vialcolor.py` | Beer-Lambert absorbance against an empty-vial reference, on linearised sRGB, so the backdrop, glass and lighting cancel. Fill level from the air/liquid absorbance step. |
+| Per-vial events | `src/fillevents.py` | Turns the frame stream into one event per finished vial; keeps the color of the **first liquid to land**, the most direct evidence of carryover. |
+| Expected color + carryover | `src/colormodel.py`, `src/carryover.py` | Tank dye coefficients fitted on clean (last-of-batch) vials; the shared mixing path simulated as a well-mixed hold-up volume (fitted: 48 mL) fed in the fixed T-200 → T-400 → T-100 order. Explains a vial if modeling the previous recipe's residue removes most of its error. |
 | Changeover risk | `ColorModel.transition_risk` | Simulates the next recipe after the current one and predicts how far off its first vials will be and how many to flush. |
 | AI vial locator | `src/yolo_locator.py`, `models/vial_yolo.onnx` | YOLO11n trained **only on digital-twin renders**; finds the vial under the nozzle for Auto-align. |
 | Dashboard | `src/dashboard.py`, `src/dashboard.html` | Standard-library web server + OpenCV; no web framework. |
@@ -56,7 +56,7 @@ The AI vial locator runs from `models/vial_yolo.onnx` through OpenCV, so no PyTo
 ### Training data from the digital twin
 
 `twin/synth_dataset.py` runs in Isaac Sim on spark7 against the fill-station twin. Every image gets
-a random moment of the fill animation, a random liquid colour and opacity (blends of the clear,
+a random moment of the fill animation, a random liquid color and opacity (blends of the clear,
 orange and blue tanks) and random lighting. Vial and nozzle boxes come from Replicator; the liquid
 box is projected from the liquid mesh's bounds through the FillCam calibration (Replicator's tight
 boxes skip transparent materials). `twin/get_training_data.py` launches it and copies the set back;
@@ -64,13 +64,21 @@ boxes skip transparent materials). `twin/get_training_data.py` launches it and c
 
 ## Results
 
-**Carryover detection** (leave-one-recipe-out on the 30 labelled vials of video 5, `src/calibrate_model.py`):
-recall on defective vials **8/9**, cause explanation correct **8/8**; false alarms on clean vials
-**9/18**. The false alarms are mostly saturated blue recipes whose real colour is brighter than the
-linear dye model predicts. They are reported separately, as the event guide asks.
+**Carryover detection** (leave-one-recipe-out on the 30 labeled vials of video 5, alarm threshold 0.30;
+reproduce with `python src/compare_baseline.py`). Compared with a color-library check like the line's
+current inspection, which passes any color the line makes:
+
+| | Color-library check | Recipe-aware (ours) |
+|---|---|---|
+| Off-color vials caught | 4 of 10 | **9 of 10** |
+| False alarms on clean vials | 6 of 17 | **4 of 17** |
+| Correct cause given for flagged vials | none | **8 of 9** |
+
+The remaining false alarms are mostly saturated blue recipes whose real color is brighter than the
+linear dye model predicts. Detection and cause are reported separately, as the event guide asks.
 
 **AI vial locator** (252 twin renders for training, tested on 300 real frames it never saw):
-vial found **98%**, centre error **1.0 px** median. Auto-align (YOLO coarse + template refine)
+vial found **98%**, center error **1.0 px** median. Auto-align (YOLO coarse + template refine)
 lands within **1 px** on all 98 test frames with simulated camera shifts of up to 90 px; template
 matching alone loses the vial beyond ~60 px. The detector's *liquid* class does **not** transfer to
 real frames (55% accuracy; the twin's liquid looks different), so it is not used.

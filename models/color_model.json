@@ -18,7 +18,7 @@
   "hydraulics": "well-mixed",
   "fit_rms": 0.1903,
   "n_clean": 9,
-  "tolerance": 0.25,
+  "tolerance": 0.3,
   "explain_gain": 0.3,
   "fitted_on": "vial_fill video 5, last vial of each batch (dye) + all vials (hold-up)",
   "created": "2026-10-30T13:11:12",
